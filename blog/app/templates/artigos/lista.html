@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ver Artigos{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  
+
+  <!-- Filtro de busca -->
+  <div class="mt-5 mb-4 px-3 text-center" id="searchFilter">
+    <form method="get" class="form-inline d-flex justify-content-center">
+      <input type="text" name="q" class="form-control mr-2 w-50" placeholder="Filtrar por Tema ou Autor" value="{{ q }}">
+      <button type="submit" class="btn btn-outline-primary">Filtrar</button>
+      {% if q %}
+        <a href="{% url 'lista_artigos' %}" class="btn btn-link ml-2">Limpar</a>
+      {% endif %}
+    </form>
+  </div>
+
+  <!-- Lista de Artigos -->
+  <div id="articlesList" class="row justify-content-center">
+    {% for artigo in artigos %}
+      <div class="col-12 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body d-flex">
+            <!-- Foto do autor à esquerda -->
+            <div class="mr-3 text-center">
+              {% if artigo.autor.perfil.foto %}
+                <img src="{{ artigo.autor.perfil.foto.url }}" alt="Foto de {{ artigo.autor.username }}" class="rounded-circle" width="60" height="60">
+              {% else %}
+                <img src="{% static 'img/default_profile.png' %}" alt="Sem foto" class="rounded-circle" width="60" height="60">
+              {% endif %}
+              
+              <!-- Nome do autor abaixo da foto -->
+              <p class="mt-2 mb-0 font-weight-bold text-primary" style="font-size: 1.1rem;">{{ artigo.autor.username }}</p>
+            </div>
+
+            <!-- Detalhes do Artigo -->
+            <div>
+              <h5 class="card-title">{{ artigo.tema }}</h5>
+              <p class="card-text">{{ artigo.assunto|truncatewords:20 }}</p>
+            </div>
+          </div>
+
+          <div class="card-footer text-muted d-flex justify-content-between">
+            <div>
+              <!-- Mostrar os botões apenas se o usuário autenticado for o autor do artigo -->
+              {% if user.is_authenticated %}
+                {% if artigo.autor == user %}
+                  <a href="{% url 'editar_artigo' artigo.pk %}" class="btn btn-warning btn-sm mr-2">Editar</a>
+                  <a href="{% url 'comentar_artigo' artigo.pk %}" class="btn btn-info btn-sm mr-2">Comentar</a>
+                  <a href="{% url 'excluir_artigo' artigo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                {% else %}
+                  <a href="{% url 'comentar_artigo' artigo.pk %}" class="btn btn-info btn-sm mr-2">Comentar</a>
+                {% endif %}
+              {% endif %}
+            </div>
+            
+            <!-- Data de criação -->
+            <div class="text-muted">
+              <small>Publicado em {{ artigo.criado_em|date:"d/m/Y" }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-muted">Ainda não há artigos disponíveis.</p>
+    {% endfor %}
+  </div>
+
+  <!-- Paginação -->
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {% if artigos.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ artigos.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+      {% endif %}
+
+      {% for num in artigos.paginator.page_range %}
+        {% if artigos.number == num %}
+          <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+        {% elif num > artigos.number|add:'-3' and num < artigos.number|add:'3' %}
+          <li class="page-item"><a class="page-link" href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+      {% endfor %}
+
+      {% if artigos.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ artigos.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+{% endblock %}

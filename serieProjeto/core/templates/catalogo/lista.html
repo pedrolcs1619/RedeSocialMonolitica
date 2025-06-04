@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Lista de Filmes{% endblock %}
+
+{% block content %}
+
+
+    <!-- Filtro por ano -->
+    <form method="get" class="filtro-form">
+        <label for="ano">Filtrar por ano:</label>
+        <input type="number" name="ano" id="ano" value="{{ request.GET.ano }}">
+        <button type="submit">Filtrar</button>
+
+    </form>
+ <!-- Botão para adicionar novo filme -->
+    <div class="novo-filme">
+        <a href="{% url 'criar_filme' %}" class="btn-criar">Adicionar Novo Filme</a>
+    </div>
+
+
+
+    
+  <!-- Lista de filmes -->
+<div class="filmes">
+    {% for filme in filmes %}
+        <div class="filme">
+            <a href="{% url 'detalhe_filme' filme.pk %}">
+                {% if filme.imagem %}
+                    <img src="{{ filme.imagem.url }}" alt="{{ filme.titulo }}">
+                {% endif %}
+                <h2>{{ filme.titulo }} ({{ filme.ano_lancamento }})</h2>
+            </a>
+            <p>{{ filme.descricao|truncatewords:20 }}</p>
+
+            <!-- Botão de excluir dentro do loop -->
+            <div class="excluir-filme">
+                <a href="{% url 'excluir_filme' filme.pk %}" class="btn-excluir">Excluir Filme</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>Nenhum filme encontrado.</p>
+    {% endfor %}
+</div>
+
+
+    <!-- Paginação -->
+    <div class="paginacao">
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+            {% endif %}
+            <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,264 @@
+/* Reset e corpo geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #004080;
+    color: white;
+    padding: 1.5em;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Navegação */
+nav {
+    background-color: #e9ecef;
+    padding: 1em;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #004080;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+/* Conteúdo central */
+.container {
+    flex: 1;
+    max-width: 600px;
+    background-color: #ffffff;
+    margin: 2em auto;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Títulos e parágrafos */
+h2 {
+    margin-bottom: 1em;
+    color: #004080;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+/* Botões */
+button,
+a.button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+button:hover,
+a.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
+button:active,
+a.button:active {
+    transform: scale(0.97);
+    background-color: #004080;
+}
+
+/* Campos de formulário */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Rodapé opcional */
+footer {
+    text-align: center;
+    padding: 1em;
+    background: #e9ecef;
+    font-size: 14px;
+    color: #666;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilo geral para o painel */
+.painel-container {
+    padding: 20px;
+    background-color: #f4f7fc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.painel-container h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.painel-container p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* Opções do painel */
+.painel-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.option {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.option h3 {
+    font-size: 22px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.option p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Botões */
+.btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Botão desabilitado */
+.btn.disabled {
+    background-color: #ccc;
+    pointer-events: none;
+}
+
+
+
+
+/* Estilo da página de cadastro */
+.cadastro-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cadastro-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cadastro-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cadastro-container form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.cadastro-container form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cadastro-container form button:hover {
+    background-color: #0056b3;
+}
+
+.cadastro-container p {
+    text-align: center;
+    font-size: 14px;
+}
+
+.cadastro-container p a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.cadastro-container p a:hover {
+    text-decoration: underline;
+}
+

@@ -1,0 +1,16 @@
+{% extends 'funcionarios/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+    <h2>Login</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Entrar</button>
+    </form>
+
+    <p>Não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se aqui</a></p>
+
+{% endblock %}

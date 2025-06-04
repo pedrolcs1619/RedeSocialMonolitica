@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ filme.titulo }}{% endblock %}
+
+{% block content %}
+<div class="filme-detalhe">
+    <h2>{{ filme.titulo }} ({{ filme.ano_lancamento }})</h2>
+
+    {% if filme.imagem %}
+        <img src="{{ filme.imagem.url }}" alt="{{ filme.titulo }}" class="poster">
+    {% else %}
+        <p><em>Imagem não disponível</em></p>
+    {% endif %}
+
+    <p>{{ filme.descricao }}</p>
+
+    <a href="{% url 'lista_filmes' %}" class="voltar-link">← Voltar à lista</a>
+</div>
+{% endblock %}

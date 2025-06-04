@@ -1,0 +1,6 @@
+{% extends 'funcionarios/base.html' %}
+{% block content %}
+  <h2>Página Pública</h2>
+  <p>Bem-vindo! Faça login para acessar a área de funcionários.</p>
+  <a href="{% url 'login' %}">Clique aqui para fazer login</a>
+{% endblock %}

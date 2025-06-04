@@ -1,0 +1,295 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fef6e4;
+  line-height: 1.6;
+}
+
+.container-fluid {
+  padding-top: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #4a4e69;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.sidebar h2 {
+  color: #e1e2e1;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Mensagem de boas-vindas */
+.sidebar .welcome {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #dcdcdc;
+}
+
+/* Botões da sidebar */
+.sidebar a {
+  display: inline-block;
+  color: #fff;
+  background-color: #5c6f87;
+  padding: 8px 14px;
+  margin-bottom: 12px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 80%;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #2e3b47;
+}
+
+/* Main Content */
+.content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+/* Card de criação de artigo */
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.card h2 {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  width: 200px;
+  height: 50px;
+  border-radius: 20px;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #218838;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+
+/* Lista de Artigos */
+.list-group-item {
+  border: 1px solid #f1f1f1;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.list-group-item strong {
+  font-size: 18px;
+  color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 220px;
+  }
+
+  .content {
+    margin-left: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: relative;
+    height: auto;
+    text-align: center;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .card button {
+    width: 100%;
+  }
+}
+
+#mensagem {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;  
+}
+
+#criarArtigo {
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#btncriar {
+  font-style: initial;
+  font-weight: bold;
+}
+
+#editar {
+  font-style: initial;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#excluir {
+  font-style: initial;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+
+#searchFilter {
+  position: sticky;
+  top: 20px; /* Distância do topo da tela */
+  z-index: 1000; /* Garante que o filtro fique acima dos outros elementos */
+  background-color: white; /* Para garantir que o fundo do filtro fique branco */
+  padding: 15px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para destacar o filtro */
+}
+
+#articlesList {
+  padding-top: 20px; /* Adiciona um espaçamento no topo para que o conteúdo abaixo do filtro não fique muito colado */
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+
+/* Estilo para o campo de upload de imagem */
+.custom-file-input {
+  display: none; /* Esconde o botão de input real */
+}
+
+.custom-file-label {
+  display: inline-block;
+  background-color: white;
+  color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 0.25rem;
+  padding: 0.375rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-file-label:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
+
+/* Efeito hover */
+.custom-file-input:focus + .custom-file-label {
+  border-color: #0056b3;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Estilo para a área de imagem no formulário */
+.form-group img {
+  max-width: 100%;
+  max-height: 200px; /* Limite de altura para a imagem */
+  margin-top: 10px;
+  border-radius: 8px; /* Bordas arredondadas */
+  object-fit: cover; /* Garante que a imagem fique bem ajustada */
+}
+
+/* Estilo para o título do campo de imagem */
+.form-group label[for="id_imagem"] {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilo para o campo de imagem quando carregada */
+.img-preview-container {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.img-preview {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+
+.artigo-lista {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* sombra suave */
+  border-radius: 8px; /* bordas arredondadas */
+  padding: 20px; /* espaço interno */
+  background-color: #fff; /* fundo branco */
+}

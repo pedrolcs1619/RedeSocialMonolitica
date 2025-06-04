@@ -1,0 +1,13 @@
+{% extends 'funcionarios/base.html' %}
+
+{% block content %}
+<h2>Cadastro de Novo Funcionário</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Exibe os campos do formulário -->
+    <button type="submit" class="btn">Cadastrar</button>
+</form>
+
+<p>Já tem uma conta? <a href="{% url 'login' %}">Faça login aqui</a></p>
+{% endblock %}

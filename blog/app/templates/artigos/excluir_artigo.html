@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Excluir Artigo{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>Confirmar Exclusão</h2>
+    <p>Você tem certeza que deseja excluir o artigo "{{ artigo.tema }}"?</p>
+    <form method="POST">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Excluir</button>
+      <a href="{% url 'lista_artigos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+{% endblock %}

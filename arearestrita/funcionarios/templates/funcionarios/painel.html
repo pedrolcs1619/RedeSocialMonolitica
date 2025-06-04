@@ -1,0 +1,18 @@
+{% extends 'funcionarios/base.html' %}
+
+{% block title %}Painel de Funcionários{% endblock %}
+
+{% block content %}
+    <div class="painel-container">
+        <h2>Bem-vindo, {{ user.username }}!</h2>
+        <p>Este é o painel de controle da área restrita. Aqui você pode acessar suas informações e outras funcionalidades reservadas para funcionários logados.</p>
+
+        <div class="painel-options">
+            <div class="option">
+                <h3>Perfil</h3>
+                <p>Acesse e edite suas informações pessoais.</p>
+                <a href="{% url 'perfil' %}" class="btn">Ver Perfil</a>
+            </div>
+    </div>
+{% endblock %}
+

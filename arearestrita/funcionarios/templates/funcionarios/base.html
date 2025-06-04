@@ -1,0 +1,31 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Área Restrita</title>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+
+</head>
+<body>
+    <header>
+        <h1>Área Restrita de Funcionários</h1>
+    </header>
+
+    <nav>
+        {% if user.is_authenticated %}
+            <a href="{% url 'painel' %}">Painel</a>
+            <a href="{% url 'perfil' %}">Perfil</a>
+            <a href="{% url 'logout' %}">Sair</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'home' %}">Home Pública</a>
+        {% endif %}
+    </nav>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

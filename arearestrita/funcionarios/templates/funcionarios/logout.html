@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-success text-center" role="alert">
+        Você foi desconectado com sucesso!
+    </div>
+    <div class="text-center">
+        <a href="{% url 'login' %}" class="btn btn-primary">Ir para o login</a>
+    </div>
+</div>
+{% endblock %}
